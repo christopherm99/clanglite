@@ -1,0 +1,16 @@
+__pycache__
+.venv/
+.DS_Store
+.*.swp
+.*.swo
+*.pyc
+*.so
+build
+*.egg-info
+a.out
+temp
+
+clanglite/**/*.py
+clanglite/**/*.cpp
+!__init__.py
+
