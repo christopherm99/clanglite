@@ -1,6 +1,6 @@
 %module CompilerInstance
 %{
-#include "clang/Frontend/CompilerInstance.h"
+#include <clang/Frontend/CompilerInstance.h>
 %}
 
 %import(module="clanglite.Lex.PreprocessorOptions") "clanglite/Lex/PreprocessorOptions.i"

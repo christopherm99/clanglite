@@ -1,7 +1,7 @@
 %module FrontendAction
 
 %{
-#include "clang/Frontend/FrontendAction.h"
+#include <clang/Frontend/FrontendAction.h>
 %}
 
 %ignore FrontendAction;

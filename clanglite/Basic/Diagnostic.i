@@ -1,7 +1,7 @@
 %module Diagnostic
 
 %{
-#include "clang/Basic/Diagnostic.h"
+#include <clang/Basic/Diagnostic.h>
 %}
 
 namespace clang {

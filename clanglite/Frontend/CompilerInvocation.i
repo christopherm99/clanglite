@@ -1,6 +1,6 @@
 %module CompilerInvocation
 %{
-#include "clang/Frontend/CompilerInvocation.h"
+#include <clang/Frontend/CompilerInvocation.h>
 %}
 
 %typemap(in) llvm::ArrayRef<const char *> {
@@ -22,15 +22,9 @@
   }
 }
 
-/* TODO: fix memory leak
-%typemap(freearg) llvm::ArrayRef<const char *> {
-  free((void *)arr);
-}
-*/
+%typemap(freearg) llvm::ArrayRef<const char *> "free((void *)($1.data()));"
 
-%typecheck(SWIG_TYPECHECK_STRING_ARRAY) llvm::ArrayRef<const char *> {
-  $1 = PyList_Check($input) ? 1 : 0;
-}
+%typecheck(SWIG_TYPECHECK_STRING_ARRAY) llvm::ArrayRef<const char *> "$1 = PyList_Check($input);"
 
 namespace clang {
 class CompilerInvocation {
