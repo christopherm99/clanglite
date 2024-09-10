@@ -8,8 +8,10 @@ Inspired by [this blog post](https://blog.memzero.de/libclang-c-to-llvm-ir/).
 
 ## Installation
 
-First install dependencies: [swig](https://www.swig.org) and clang 14 (on
-ubuntu: `apt install swig clang-14 libclang-14-dev libclang-cpp14-dev`).
+First install dependencies: [swig](https://www.swig.org) and clang. See below
+for details on compatible clang versions. Please install clang using
+[this guide](https://apt.llvm.org/) to ensure that all dependencies are
+installed.
 
 Install using pip (ie. `pip install .`).
 
@@ -19,5 +21,5 @@ See `test/test_clanglite.py` for example usage.
 
 ## Compatibility
 
-Tested with clang 14. Should work OOB with nearby versions (see `setup.py`).
+Tested with clang 14 and 19.
 

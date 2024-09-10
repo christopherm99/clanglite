@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
 
-from setuptools import Extension, find_packages, setup
+from setuptools import Extension, setup
 from setuptools.command.build_py import build_py as _build_py
 from pathlib import Path
 import subprocess
 
-llvm_cxxflags = subprocess.check_output(['llvm-config-14', '--cxxflags']).decode('utf-8').strip().split(' ')
-llvm_ldflags = subprocess.check_output(['llvm-config-14', '--ldflags']).decode('utf-8').strip().split(' ')
-llvm_libs = subprocess.check_output(['llvm-config-14', '--libs', 'core']).decode('utf-8').strip().split(' ')
+llvm_cxxflags = subprocess.check_output(['llvm-config', '--cxxflags']).decode('utf-8').strip().split(' ')
+llvm_ldflags = subprocess.check_output(['llvm-config', '--ldflags']).decode('utf-8').strip().split(' ')
+llvm_libs = subprocess.check_output(['llvm-config', '--libs', 'all-targets']).decode('utf-8').strip().split(' ')
+llvm_syslibs = subprocess.check_output(['llvm-config', '--system-libs']).decode('utf-8').strip().split(' ')
+llvm_includedir = subprocess.check_output(['llvm-config', '--includedir']).decode('utf-8')
 
 exts = [Extension(name=f'{str(path.parent).replace("/", ".")}._{path.stem}',
                   sources=[str(path)],
                   swig_opts=['-c++'],
-                  include_dirs=['/usr/lib/llvm-14/include'],
+                  include_dirs=[llvm_includedir],
                   extra_compile_args=[arg for arg in llvm_cxxflags if arg],
-                  extra_link_args=['-shared'] + [arg for arg in llvm_ldflags + llvm_libs if arg] + ['-lclang-cpp'])
+                  extra_link_args=['-shared'] + [arg for arg in llvm_ldflags + llvm_libs + llvm_syslibs if arg] + ['-lclang-cpp'])
         for path in Path('.').glob('clanglite/**/*.i')]
 
 class build_py(_build_py):

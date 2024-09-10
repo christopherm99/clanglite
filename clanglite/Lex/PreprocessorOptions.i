@@ -1,6 +1,7 @@
 %module PreprocessorOptions
 %{
-#include "clang/Lex/PreprocessorOptions.h"
+#include <clang/Lex/PreprocessorOptions.h>
+#include <llvm/Support/MemoryBuffer.h>
 %}
 
 %typemap(in) llvm::StringRef "$1 = llvm::StringRef(PyBytes_AsString($input));"

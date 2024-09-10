@@ -6,10 +6,6 @@ from clanglite.CodeGen.CodeGenAction import EmitAssemblyAction
 from clanglite.Basic.Diagnostic import DiagnosticsEngine
 from clanglite.Basic.DiagnosticOptions import DiagnosticOptions
 
-import os
-
-input(f"PID is {os.getpid()}. Press ENTER to continue...")
-
 InitializeAllTargets()
 InitializeAllTargetMCs()
 InitializeAllAsmPrinters()
