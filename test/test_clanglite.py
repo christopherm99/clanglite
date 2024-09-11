@@ -1,10 +1,7 @@
 from clanglite.Support import *
-from clanglite.Frontend.CompilerInstance import CompilerInstance
-from clanglite.Frontend.CompilerInvocation import CompilerInvocation
-from clanglite.Frontend.TextDiagnosticPrinter import TextDiagnosticPrinter
-from clanglite.CodeGen.CodeGenAction import EmitAssemblyAction
-from clanglite.Basic.Diagnostic import DiagnosticsEngine
-from clanglite.Basic.DiagnosticOptions import DiagnosticOptions
+from clanglite.Frontend import CompilerInstance, CompilerInvocation, TextDiagnosticPrinter
+from clanglite.CodeGen import EmitAssemblyAction
+from clanglite.Basic import DiagnosticsEngine, DiagnosticOptions
 
 InitializeAllTargets()
 InitializeAllTargetMCs()
