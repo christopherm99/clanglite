@@ -13,7 +13,8 @@ InitializeAllAsmParsers()
 
 diag_opts = DiagnosticOptions()
 diag_print = TextDiagnosticPrinter(diag_opts)
-diag_eng = DiagnosticsEngine(None, diag_opts, diag_print)
+diag_eng = DiagnosticsEngine(None, diag_opts, diag_print, False)
+diag_print.thisown = False
 
 cc = CompilerInstance()
 
